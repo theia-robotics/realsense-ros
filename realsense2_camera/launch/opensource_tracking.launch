@@ -20,33 +20,33 @@
         <arg name="depth_topic" value="/camera/aligned_depth_to_color/image_raw"/>
         <arg name="camera_info_topic" value="/camera/color/camera_info"/>
         <arg name="depth_camera_info_topic" value="/camera/depth/camera_info"/>
-        <arg name="rtabmapviz" value="false"/>
+        <arg name="rtabmapviz" value="true"/>
         <arg name="rviz" value="true"/>
     </include>
 
-    <include file="$(find robot_localization)/launch/ukf_template.launch"/>
-    <param name="/ukf_se/frequency" value="300"/>
-    <param name="/ukf_se/base_link_frame" value="camera_link"/>
-    <param name="/ukf_se/odom0" value="rtabmap/odom"/>
-    <rosparam param="/ukf_se/odom0_config">[true,true,true,
+    <include file="$(find robot_localization)/launch/ekf_template.launch"/>
+    <param name="/ekf_se/frequency" value="300"/>
+    <param name="/ekf_se/base_link_frame" value="camera_link"/>
+    <param name="/ekf_se/odom0" value="rtabmap/odom"/>
+    <rosparam param="/ekf_se/odom0_config">[true,true,true,
                                             true,true,true,
                                             true,true,true,
                                             true,true,true,
                                             true,true,true]
     </rosparam>
-    <param name="/ukf_se/odom0_relative" value="true"/>
-    <param name="/ukf_se/odom0_pose_rejection_threshold" value="10000000"/>
-    <param name="/ukf_se/odom0_twist_rejection_threshold" value="10000000"/>
+    <param name="/ekf_se/odom0_relative" value="true"/>
+    <param name="/ekf_se/odom0_pose_rejection_threshold" value="10000000"/>
+    <param name="/ekf_se/odom0_twist_rejection_threshold" value="10000000"/>
 
-    <param name="/ukf_se/imu0" value="/imu/data"/>
-    <rosparam param="/ukf_se/imu0_config">[false, false, false,
+    <param name="/ekf_se/imu0" value="/imu/data"/>
+    <rosparam param="/ekf_se/imu0_config">[false, false, false,
                                            true,  true,  true,
                                            true,  true,  true,
                                            true,  true,  true,
                                            true,  true,  true]
     </rosparam>
-    <param name="/ukf_se/imu0_differential" value="true"/>
-    <param name="/ukf_se/imu0_relative" value="false"/>
-    <param name="/ukf_se/use_control" value="false"/>
-    <!-- <param name="/ukf_se/odom0_config" value="{true,true,true,}"/> -->
+    <param name="/ekf_se/imu0_differential" value="true"/>
+    <param name="/ekf_se/imu0_relative" value="false"/>
+    <param name="/ekf_se/use_control" value="false"/>
+    <!-- <param name="/ekf_se/odom0_config" value="{true,true,true,}"/> -->
 </launch>
